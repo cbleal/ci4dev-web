@@ -382,8 +382,6 @@ class Users extends BaseController
     // exibindo a imagem do usuario
     public function image(string $image = null)
     {
-        var_dump($image); exit;
-
         if ($image != null) {
             $this->viewFile('users', $image);
         }
