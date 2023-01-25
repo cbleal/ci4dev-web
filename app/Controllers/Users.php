@@ -44,9 +44,33 @@ class Users extends BaseController
 
         # percorrer o objeto users
         foreach ($users as $user) {
+
+            # definindo o caminho da imagem do usuario
+            if ($user->image != null) {
+
+                # Tem imagem
+                $imagem = [
+                    'src' => site_url("users/image/$user->image"),
+                    'class' => 'rounded-circle img-fluid',
+                    'alt' => esc($user->name),
+                    'width' => 50
+                ];
+
+            } else {
+
+                # Não tem imagem
+                $imagem = [
+                    'src' => site_url('features/img/no-image.png'),
+                    'class' => 'rounded-circle img-fluid',
+                    'alt' => 'Usuário sem imagem',
+                    'width' => 50
+                ];
+
+            }
+
             # adicionar ao array data
             $data[] = [
-                'image'  => $user->image,
+                'image'  => $user->image = img($imagem),
                 'name'   => anchor(
                     "users/view/{$user->id}",
                     esc($user->name),

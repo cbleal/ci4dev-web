@@ -40,25 +40,17 @@ $routes->set404Override();
 
 $routes->get('/', 'Home::index');
 
-// $routes->match(['get', 'post'], 'news/create', 'News::create');
-// $routes->get('news/(:segment)', 'News::view/$1');
-// $routes->get('news', 'News::index');
-// $routes->get('color', 'Color::index');
-
 $routes->get('users', 'Users::index');
 $routes->get('users/getUsers', 'Users::getUsers');
 $routes->get('users/view/(:num)', 'Users::view/$1');
 $routes->get('users/viewImage/(:num)', 'Users::viewImage/$1');
+$routes->get('users/image/(:any)', 'Users::image/$1');
 $routes->post('users/uploadImage', 'Users::uploadImage');
 
 $routes->get('users/edit/(:num)', 'Users::edit/$1');
 $routes->get('users/create', 'Users::create');
 $routes->post('users/store', 'Users::store');
 $routes->post('users/update', 'Users::update');
-
-// $routes->get('pages', 'Pages::index');
-// $routes->get('(:any)', 'Pages::view/$1');
-
 
 
 /*
