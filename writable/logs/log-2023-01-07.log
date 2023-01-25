@@ -1,0 +1,126 @@
+CRITICAL - 2023-01-07 09:38:33 --> Undefined variable $user
+in APPPATH\Controllers\Users.php on line 43.
+ 1 APPPATH\Controllers\Users.php(43): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->getUsers()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 09:39:11 --> Undefined variable $user
+in APPPATH\Controllers\Users.php on line 43.
+ 1 APPPATH\Controllers\Users.php(43): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->getUsers()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+ERROR - 2023-01-07 10:03:17 --> mysqli_sql_exception: Table 'ordem.news' doesn't exist in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php:292
+Stack trace:
+#0 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Database\MySQLi\Connection.php(292): mysqli->query()
+#1 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+#4 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\BaseModel.php(585): CodeIgniter\Model->doFindAll()
+#6 C:\dev\php\ci4dev-web\app\Models\NewsModel.php(15): CodeIgniter\BaseModel->findAll()
+#7 C:\dev\php\ci4dev-web\app\Controllers\News.php(13): App\Models\NewsModel->getNews()
+#8 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php(927): App\Controllers\News->index()
+#9 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+#10 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+#11 C:\dev\php\ci4dev-web\public\index.php(67): CodeIgniter\CodeIgniter->run()
+#12 C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Commands\Server\rewrite.php(46): require_once('...')
+#13 {main}
+CRITICAL - 2023-01-07 10:03:17 --> Table 'ordem.news' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 292.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(292): mysqli->query()
+ 2 SYSTEMPATH\Database\BaseConnection.php(666): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH\Database\BaseConnection.php(593): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1585): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH\Model.php(223): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(585): CodeIgniter\Model->doFindAll()
+ 7 APPPATH\Models\NewsModel.php(15): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\News.php(13): App\Models\NewsModel->getNews()
+ 9 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\News->index()
+10 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+11 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+12 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 10:09:41 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 10:54:28 --> view(): Argument #2 ($data) must be of type array, stdClass given, called in C:\dev\php\ci4dev-web\app\Controllers\Users.php on line 75
+in SYSTEMPATH\Common.php on line 1120.
+ 1 APPPATH\Controllers\Users.php(75): view()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 10:55:49 --> view(): Argument #2 ($data) must be of type array, stdClass given, called in C:\dev\php\ci4dev-web\app\Controllers\Users.php on line 75
+in SYSTEMPATH\Common.php on line 1120.
+ 1 APPPATH\Controllers\Users.php(75): view()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->get()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:30 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:30 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:30 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:30 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:30 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:31 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:31 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-07 11:01:31 --> App\Controllers\Users::view(): Argument #1 ($id) must be of type ?int, string given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\CodeIgniter.php on line 927
+in APPPATH\Controllers\Users.php on line 71.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

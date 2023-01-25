@@ -1,0 +1,14 @@
+CRITICAL - 2023-01-20 09:05:44 --> form_input(): Argument #2 ($value) must be of type string, null given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Helpers\form_helper.php on line 123
+in SYSTEMPATH\Helpers\form_helper.php on line 143.
+ 1 SYSTEMPATH\Helpers\form_helper.php(123): form_input()
+ 2 SYSTEMPATH\Helpers\form_helper.php(67): form_hidden()
+ 3 APPPATH\Views\Users\create.php(35): form_open()
+ 4 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\Users\\create.php')
+ 5 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 6 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render()
+ 7 APPPATH\Controllers\Users.php(95): view()
+ 8 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->create()
+ 9 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+11 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

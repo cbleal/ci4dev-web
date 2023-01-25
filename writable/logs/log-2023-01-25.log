@@ -1,0 +1,14 @@
+CRITICAL - 2023-01-25 10:18:05 --> Call to undefined function App\Controllers\img()
+in APPPATH\Controllers\Users.php on line 73.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->getUsers()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-25 10:19:03 --> Call to undefined function App\Controllers\img()
+in APPPATH\Controllers\Users.php on line 73.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->getUsers()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

@@ -1,0 +1,27 @@
+CRITICAL - 2022-12-19 13:42:22 --> Undefined constant "App\Controllers\APPATH"
+in APPPATH\Controllers\Pages.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Pages->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2022-12-19 13:43:16 --> Undefined constant "App\Controllers\APPATH"
+in APPPATH\Controllers\Pages.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Pages->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-19 13:44:06 --> Undefined constant "App\Controllers\APPATH"
+in APPPATH\Controllers\Pages.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Pages->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2022-12-19 13:44:25 --> Undefined constant "App\Controllers\APPATH"
+in APPPATH\Controllers\Pages.php on line 10.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Pages->view()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

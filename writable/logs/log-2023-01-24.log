@@ -1,0 +1,115 @@
+CRITICAL - 2023-01-24 10:50:17 --> Unclosed '{' on line 10
+in APPPATH\Controllers\Users.php on line 339.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(259): CodeIgniter\Autoloader\Autoloader->includeFile()
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(237): CodeIgniter\Autoloader\Autoloader->loadInNamespace()
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass()
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists()
+ 5 SYSTEMPATH\CodeIgniter.php(469): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 11:27:03 --> Class "finfo" not found
+in APPPATH\Controllers\BaseController.php on line 57.
+ 1 APPPATH\Controllers\Users.php(344): App\Controllers\BaseController->viewFile()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->image()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 11:30:03 --> Class "finfo" not found
+in APPPATH\Controllers\BaseController.php on line 57.
+ 1 APPPATH\Controllers\Users.php(344): App\Controllers\BaseController->viewFile()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->image()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 11:32:04 --> Class "finfo" not found
+in APPPATH\Controllers\BaseController.php on line 57.
+ 1 APPPATH\Controllers\Users.php(344): App\Controllers\BaseController->viewFile()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->image()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 15:42:00 --> Rota users/image/1674583966_2bb609fe7e8699bcc73e.jpg não foi encontrada ao fazer o roteamento-reverso.
+in SYSTEMPATH\Helpers\url_helper.php on line 543.
+ 1 SYSTEMPATH\Helpers\url_helper.php(543): CodeIgniter\Router\Exceptions\RouterException::forInvalidRoute()
+ 2 APPPATH\Views\Users\view.php(34): url_to()
+ 3 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\Users\\view.php')
+ 4 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 5 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render()
+ 6 APPPATH\Controllers\Users.php(84): view()
+ 7 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 8 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 9 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+10 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 16:06:37 --> Undefined variable $pathImage
+in APPPATH\Views\Users\view.php on line 36.
+ 1 APPPATH\Views\Users\view.php(36): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\Users\\view.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render()
+ 5 APPPATH\Controllers\Users.php(84): view()
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 16:06:56 --> Undefined variable $pathImage
+in APPPATH\Views\Users\view.php on line 36.
+ 1 APPPATH\Views\Users\view.php(36): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\View\View.php(213): include('APPPATH\\Views\\Users\\view.php')
+ 3 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1134): CodeIgniter\View\View->render()
+ 5 APPPATH\Controllers\Users.php(84): view()
+ 6 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->view()
+ 7 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 16:19:15 --> Arquivo não encontrado: features/img/users
+in SYSTEMPATH\Files\File.php on line 46.
+ 1 SYSTEMPATH\Files\File.php(46): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound()
+ 2 SYSTEMPATH\Images\Handlers\BaseHandler.php(148): CodeIgniter\Files\File->__construct()
+ 3 APPPATH\Controllers\Users.php(329): CodeIgniter\Images\Handlers\BaseHandler->withFile()
+ 4 APPPATH\Controllers\Users.php(174): App\Controllers\Users->manipulateImage()
+ 5 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->uploadImage()
+ 6 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 16:20:23 --> Arquivo não encontrado: features/img/users/
+in SYSTEMPATH\Files\File.php on line 46.
+ 1 SYSTEMPATH\Files\File.php(46): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound()
+ 2 SYSTEMPATH\Images\Handlers\BaseHandler.php(148): CodeIgniter\Files\File->__construct()
+ 3 APPPATH\Controllers\Users.php(329): CodeIgniter\Images\Handlers\BaseHandler->withFile()
+ 4 APPPATH\Controllers\Users.php(174): App\Controllers\Users->manipulateImage()
+ 5 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->uploadImage()
+ 6 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 16:24:19 --> Arquivo não encontrado: features/img/users
+in SYSTEMPATH\Files\File.php on line 46.
+ 1 SYSTEMPATH\Files\File.php(46): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound()
+ 2 SYSTEMPATH\Images\Handlers\BaseHandler.php(148): CodeIgniter\Files\File->__construct()
+ 3 APPPATH\Controllers\Users.php(331): CodeIgniter\Images\Handlers\BaseHandler->withFile()
+ 4 APPPATH\Controllers\Users.php(174): App\Controllers\Users->manipulateImage()
+ 5 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->uploadImage()
+ 6 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-24 16:25:53 --> Arquivo não encontrado: features/img/users
+in SYSTEMPATH\Files\File.php on line 46.
+ 1 SYSTEMPATH\Files\File.php(46): CodeIgniter\Files\Exceptions\FileNotFoundException::forFileNotFound()
+ 2 SYSTEMPATH\Images\Handlers\BaseHandler.php(148): CodeIgniter\Files\File->__construct()
+ 3 APPPATH\Controllers\Users.php(331): CodeIgniter\Images\Handlers\BaseHandler->withFile()
+ 4 APPPATH\Controllers\Users.php(174): App\Controllers\Users->manipulateImage()
+ 5 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->uploadImage()
+ 6 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
