@@ -1,0 +1,15 @@
+CRITICAL - 2023-01-27 16:22:35 --> Call to undefined method App\Models\UserModel::getUserOr404
+in SYSTEMPATH\Model.php on line 774.
+ 1 APPPATH\Controllers\Users.php(387): CodeIgniter\Model->__call()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->restoreUser()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
+CRITICAL - 2023-01-27 16:23:21 --> Object of class App\Entities\User could not be converted to string
+in APPPATH\Controllers\Users.php on line 398.
+ 1 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Users->restoreUser()
+ 2 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

@@ -34,10 +34,21 @@ class Users extends BaseController
         }
 
         # array que representa os campos a recuperar
-        $fields = [];
+        $fields = [
+            'id',
+            'name',
+            'email',
+            'active',
+            'image',
+            'deleted_at',
+
+        ];
 
         # objeto users recuperados da tabela
-        $users = $this->userModel->select($fields)->orderBy('id', 'DESC')->findAll();
+        $users = $this->userModel->select($fields)
+                                ->withDeleted(true)
+                                ->orderBy('id', 'DESC')
+                                ->findAll();
 
         # array data => vai receber os users
         $data = [];
@@ -77,9 +88,7 @@ class Users extends BaseController
                     'title="Exibir Usuário ' . esc($user->name) . '"'
                 ),
                 'email'  => esc($user->email),
-                'active' => ($user->active == true
-                    ? '<i class="fa fa-unlock text-success"></i>&nbsp;Ativo'
-                    : '<i class="fa fa-lock text-warning"></i>&nbsp;Inativo'),
+                'active' => $user->viewSituation(),
             ];
         }
 
@@ -333,6 +342,63 @@ class Users extends BaseController
         return $this->response->setJSON($retorno);
     }
 
+    public function delete(int $id = null)
+    {
+        $user = $this->getUserOr404($id);
+
+        # se o usuario está excluido, aborta a execução e exibe uma mensagem
+        if ($user->deleted_at != null) {
+            return redirect()->back()->with('info', 'Esse usuário já encontra-se excluído');
+        }
+
+        # se a requisição foi do tipo post
+        if ($this->request->getMethod() === 'post') {
+
+            # remove o usuario
+            $this->userModel->delete($user->id);
+
+            # se o usuario tem imagem, excluímos a imagem
+            if ($user->image != null) {
+
+                # removemos a imagem
+                $this->removeImageOfFileSystem($user->image);
+            }
+
+            # atualizar campos imagem e ativo do usuario
+            $this->uploadUserDeleted($user);
+
+            # retornamos p/a página principal de usuarios e mostramos uma mensagem de sucesso
+            return redirect()->to(site_url('users'))
+                            ->with('sucesso', "Usuário {$user->name} excluído com sucesso.");
+
+        }
+
+        $data = [
+            'title' => 'Excluindo o Usuário ' . esc($user->name),
+            'user'  => $user,
+        ];
+
+        return view('Users/delete', $data);
+    }
+
+    public function restoreUser(int $id = null)
+    {
+        # busca o usuario pelo id
+        $user = $this->getUserOr404($id);
+
+        # usuario não deletado não pode ser restaurado
+        if ($user->deleted_at == null) {
+            return redirect()->back()->with('info', 'Apenas usuários excluídos podem ser restaurados.');
+        }
+
+        # restaurar o usuario deletado
+        $user->deleted_at = null;
+        $this->userModel->protect(false)->save($user);
+
+        return redirect()->back()->with('sucesso', "Usuário {$user->name} restaurado com sucesso.");
+
+    }
+
     private function getUserOr404(int $id = null)
     {
         # se o parametro id não foi passado ou não existe usuario na tabela
@@ -377,6 +443,15 @@ class Users extends BaseController
         if (is_file($pathImage)) {
             unlink($pathImage);
         }
+    }
+
+    // método responsável por atualizar os campos de imagem e ativo do usuario
+    private function uploadUserDeleted($user)
+    {
+        $user->image = null;
+        $user->active = false;
+
+        $this->userModel->protect(false)->save($user);
     }
 
     // exibindo a imagem do usuario

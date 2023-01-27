@@ -48,7 +48,7 @@
             <!-- email do usuario -->
             <p class="card-text"><?= esc($user->email) ?></p>
             <!-- situação do usuario -->
-            <p class="card-text"><?= $user->active == '1' ? 'Usuário ativo' : 'Usuário inativo' ?></p>
+            <p class="card-text"><?= $user->viewSituation() ?></p>
             <!-- data da criação -->
             <p class="card-text">Criado em: <?= $user->created_at->humanize() ?></p>
             <!-- data da alteração -->
@@ -59,10 +59,18 @@
                 <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Ações
                 </button>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu">                    
+
                     <a class="dropdown-item" href="<?= site_url("users/edit/{$user->id}") ?>">Editar Usuário</a>
+
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
+
+                    <?php if($user->deleted_at != null): ?>
+                        <a class="dropdown-item" href="<?= site_url("users/restoreUser/{$user->id}") ?>">Restaurar Usuário</a>
+                    <?php else: ?>
+                        <a class="dropdown-item" href="<?= site_url("users/delete/{$user->id}") ?>">Excluir Usuário</a>
+                    <?php endif; ?>
+
                 </div>
             </div>
 
