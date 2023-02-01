@@ -20,7 +20,7 @@
     <div class="col-lg-4">
 
         <!-- div block -->
-        <div class="block">
+        <div class="user-block block">
 
             <div class="text-center">
 
@@ -48,7 +48,7 @@
             <!-- email do usuario -->
             <p class="card-text"><?= esc($user->email) ?></p>
             <!-- situação do usuario -->
-            <p class="card-text"><?= $user->viewSituation() ?></p>
+            <p class="contributions mt-0"><?= $user->viewSituation() ?></p>
             <!-- data da criação -->
             <p class="card-text">Criado em: <?= $user->created_at->humanize() ?></p>
             <!-- data da alteração -->

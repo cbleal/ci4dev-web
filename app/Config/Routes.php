@@ -55,6 +55,10 @@ $routes->get('users/delete/(:num)', 'Users::delete/$1');
 $routes->post('users/delete/(:num)', 'Users::delete/$1');
 $routes->get('users/restoreUser/(:num)', 'Users::restoreUser/$1');
 
+$routes->get('grupos', 'Grupos::index');
+$routes->get('grupos/getGrupos', 'Grupos::getGrupos');
+$routes->get('grupos/view/(:num)', 'Grupos::view/$1');
+
 
 
 /*

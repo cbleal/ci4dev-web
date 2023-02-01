@@ -198,9 +198,11 @@
       <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
       <ul class="list-unstyled">
 
-        <li class="<?= (url_is('/')) ? 'active' : '' ?>"><a href="<?= site_url('/home') ?>"> <i class="icon-home"></i>Home </a></li>
+        <li class="<?= (url_is('/')) ? 'active' : '' ?>"><a href="<?= site_url('/') ?>"> <i class="icon-home"></i>Home </a></li>
 
         <li class="<?= url_is('/users*') ? 'active' : '' ?>"><a href="<?= site_url('/users') ?>"> <i class="icon-user"></i>Usuários </a></li>
+        
+        <li class="<?= url_is('/grupos*') ? 'active' : '' ?>"><a href="<?= site_url('/grupos') ?>"> <i class="icon-user"></i>Grupos e Permissões</a></li>
 
         <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
         <li><a href="forms.html"> <i class="icon-padnote"></i>Forms </a></li>
