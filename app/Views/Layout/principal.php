@@ -201,7 +201,7 @@
         <li class="<?= (url_is('/')) ? 'active' : '' ?>"><a href="<?= site_url('/') ?>"> <i class="icon-home"></i>Home </a></li>
 
         <li class="<?= url_is('/users*') ? 'active' : '' ?>"><a href="<?= site_url('/users') ?>"> <i class="icon-user"></i>Usuários </a></li>
-        
+
         <li class="<?= url_is('/grupos*') ? 'active' : '' ?>"><a href="<?= site_url('/grupos') ?>"> <i class="icon-user"></i>Grupos e Permissões</a></li>
 
         <li><a href="charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
@@ -288,13 +288,13 @@
           </div> -->
 
         <!-- espaço reservado para renderizar o conteúdo de cada view que estender esse layout -->
-        
+
         <div class="container-fluid">
 
           <?= $this->include('Layout/_mensagens') ?>
 
           <?= $this->renderSection('content') ?>
-          
+
         </div>
 
       </section>
@@ -318,6 +318,15 @@
 
   <!-- espaço reservado para renderizar os scripts de cada view que estender esse layout -->
   <?= $this->renderSection('scripts') ?>
+
+  <!-- PopOver Bootstrap -->
+  <script>
+    $(function() {
+      $('[data-toggle="popover"]').popover({
+        html: true,
+      })
+    })
+  </script>
 
 </body>
 

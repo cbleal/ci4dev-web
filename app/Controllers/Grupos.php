@@ -99,4 +99,24 @@ class Grupos extends BaseController
 
         return view('Grupos/view', $data);
     }
+
+    public function edit(int $id = null)
+    {
+        $grupo = $this->getGrupoOr404($id);
+
+        if ($grupo->id < 3) {
+
+            return redirect()
+                    ->back()
+                    ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou removido.');
+            
+        }
+
+        $data = [
+            'title' => 'Editando o Grupo ' . esc($grupo->name),
+            'grupo'  => $grupo,
+        ];
+
+        return view('Grupos/edit', $data);
+    }
 }

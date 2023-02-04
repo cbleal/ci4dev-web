@@ -1,0 +1,8 @@
+CRITICAL - 2023-02-04 11:41:45 --> Object of class App\Entities\Grupo could not be converted to int
+in APPPATH\Controllers\Grupos.php on line 107.
+ 1 APPPATH\Controllers\Grupos.php(107): CodeIgniter\Debug\Exceptions->errorHandler()
+ 2 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Grupos->edit()
+ 3 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 4 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 5 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')

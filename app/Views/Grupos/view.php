@@ -17,43 +17,60 @@
 
 <div class="row">
 
-    <div class="col-lg-3">
+    <?php if ($grupo->id < 3) : ?>
+        <div class="col-md-12">
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Importante!</h4>
+                <p>Este grupo não poderá ser editado ou excluído pois o mesmo já é padrão do sistema.</p>
+                <hr>
+                <p class="mb-0">No entanto, os demais grupos poderão ser manipulados conforme a necessidade do usuário.</p>
+            </div>
+        </div>
+    <?php endif; ?>
+
+    <div class="col-lg-4">
 
         <!-- div block -->
-        <div class="grupo-block block">           
+        <div class="grupo-block block">
 
-            <!-- nome do usuario -->
+            <!-- nome do grupo -->
             <h5 class="card-text"><?= esc($grupo->name) ?></h5>
-            <!-- email do usuario -->
+            <!-- situação do grupo -->
+            <p class="contributions mt-0">
+                <?= $grupo->viewSituation() ?>
+                <?php if ($grupo->deleted_at === null) : ?>
+                    <a tabindex="0" style="text-decoration: none;" role="button" data-toggle="popover" data-trigger="focus" title="Importante" data-content="Esse grupo <?= $grupo->view === true ? 'será' : 'não será' ?> exibido na hora da definição do <strong>Responsável Técnico</strong> pela Ordem de Serviço">&nbsp;&nbsp;<i class="fa fa-question-circle"></i></a>
+                <?php endif; ?>
+            </p>
+            <!-- descricao do grupo -->
             <p class="card-text"><?= esc($grupo->description) ?></p>
-            <!-- situação do usuario -->
-            <p class="contributions mt-0"><?= $grupo->viewSituation() ?></p>
             <!-- data da criação -->
             <p class="card-text">Criado em: <?= $grupo->created_at->humanize() ?></p>
             <!-- data da alteração -->
             <p class="card-text">Atualizado em: <?= $grupo->updated_at->humanize() ?></p>
 
-            <!-- dropdown bootstrap -->
-            <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Ações
-                </button>
-                <div class="dropdown-menu">                    
+            <?php if ($grupo->id > 2) : ?>
+                <div class="btn-group mr-2">
+                    <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Ações
+                    </button>
+                    <div class="dropdown-menu">
 
-                    <a class="dropdown-item" href="<?= site_url("grupos/edit/{$grupo->id}") ?>">Editar Grupo</a>
+                        <a class="dropdown-item" href="<?= site_url("grupos/edit/{$grupo->id}") ?>">Editar Grupo</a>
 
-                    <div class="dropdown-divider"></div>
+                        <div class="dropdown-divider"></div>
 
-                    <?php if($grupo->deleted_at != null): ?>
-                        <a class="dropdown-item" href="<?= site_url("grupos/restoregrupo/{$grupo->id}") ?>">Restaurar Grupo</a>
-                    <?php else: ?>
-                        <a class="dropdown-item" href="<?= site_url("grupos/delete/{$grupo->id}") ?>">Excluir Grupo</a>
-                    <?php endif; ?>
+                        <?php if ($grupo->deleted_at != null) : ?>
+                            <a class="dropdown-item" href="<?= site_url("grupos/restoregrupo/{$grupo->id}") ?>">Restaurar Grupo</a>
+                        <?php else : ?>
+                            <a class="dropdown-item" href="<?= site_url("grupos/delete/{$grupo->id}") ?>">Excluir Grupo</a>
+                        <?php endif; ?>
 
+                    </div>
                 </div>
-            </div>
+            <?php endif; ?>
 
-            <a href="<?= site_url('grupos') ?>" class="btn btn-secondary ml-2">Voltar</a>
+            <a href="<?= site_url('grupos') ?>" class="btn btn-secondary">Voltar</a>
 
         </div>
         <!-- fim div block -->
