@@ -59,6 +59,7 @@ $routes->get('grupos', 'Grupos::index');
 $routes->get('grupos/getGrupos', 'Grupos::getGrupos');
 $routes->get('grupos/view/(:num)', 'Grupos::view/$1');
 $routes->get('grupos/edit/(:num)', 'Grupos::edit/$1');
+$routes->post('grupos/update', 'Grupos::update');
 
 
 

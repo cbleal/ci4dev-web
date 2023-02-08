@@ -119,4 +119,61 @@ class Grupos extends BaseController
 
         return view('Grupos/edit', $data);
     }
+
+    public function update()
+    {
+        # se não for uma requisição AJAX, aborta execução
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        # envio de um novo hash do token do formulario
+        $retorno['token'] = csrf_hash();
+
+        # recupear o post da requisição
+        $post = $this->request->getPost();
+
+        # validando a existencia de um grupo
+        $grupo = $this->getGrupoOr404($post['id']);      
+
+        # validar a operação para os grupos Administrador e Clientes
+        if ($grupo->id < 3) {
+
+            # mensagem de erro
+            $retorno['erro'] = 'Por favor, verifique os dados abaixo e tente novamente:';
+
+            # mensagem de erros de validação
+            $retorno['erros_model'] = ['grupo' => "Esse grupo não pode ser alterado ou excluído."];
+
+            # retorno para o ajax request
+            return $this->response->setJSON($retorno);
+            
+        }
+
+        # preenchemos os atributos do grupo com os valores do post
+        $grupo->fill($post);
+
+        # verifica se houve alteração no grupo
+        if ($grupo->hasChanged() == false) {
+            $retorno['info'] = 'Não há dados para serem atualizados.';
+            return $this->response->setJSON($retorno);
+        }
+
+        # grava os dados (protect(false) = retira a protecao dos dados)
+        if ($this->grupoModel->protect(false)->save($grupo)) {
+
+            session()->setFlashdata('sucesso', 'Dados salvos com sucesso.');
+
+            return $this->response->setJSON($retorno);
+        }
+
+        # mensagem de erro
+        $retorno['erro'] = 'Por favor, verifique os dados abaixo e tente novamente:';
+
+        # mensagem de erros de validação
+        $retorno['erros_model'] = $this->grupoModel->errors();
+
+        # retorno para o ajax request
+        return $this->response->setJSON($retorno);
+    }
 }
