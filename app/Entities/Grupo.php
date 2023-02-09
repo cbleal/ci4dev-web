@@ -17,7 +17,7 @@ class Grupo extends Entity
 
             $icon = '<span class="text-white">Excluído</span>&nbsp;<i class="fa fa-undo"></i>&nbsp;Desfazer';
 
-            $situation = anchor("grupo/restoreGrupo/$this->id", $icon, ['class' => 'btn btn-outline-success btn-sm'] );
+            $situation = anchor("grupos/restoreGrupo/$this->id", $icon, ['class' => 'btn btn-outline-success btn-sm'] );
             
             return $situation;
         }

@@ -8,7 +8,7 @@ class GrupoModel extends Model
 {
     protected $table            = 'grupos';   
     protected $returnType       = 'App\Entities\Grupo';  // object, array
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     protected $allowedFields    = [
         'name',
         'description',
@@ -23,15 +23,16 @@ class GrupoModel extends Model
 
     // Validation
     protected $validationRules = [
-        'name'        => 'required|min_length[3]|max_length[140]|is_unique[users.name,id,{id}]',
+        'name'        => 'required|min_length[3]|max_length[140]|is_unique[grupos.name,id,{id}]',
         'description' => 'required|min_length[5]|max_length[240]',
     ];
 
     protected $validationMessages = [
         'name' => [
-            'required'   => 'Campo Nome é de preenchimento obrigatório.',
-            'min_length' => 'Campo Nome deve conter no mínimo 3 caracteres',
-            'max_length' => 'Campo Nome deve conter no máximo 128 caracteres',
+            'required'   => 'Campo Nome do Grupo é de preenchimento obrigatório.',
+            'min_length' => 'Campo Nome do Grupo deve conter no mínimo 3 caracteres',
+            'max_length' => 'Campo Nome do Grupo deve conter no máximo 128 caracteres',
+            'is_unique'  => 'Desculpe, esse Campo Nome do Grupo já existe, tente outro',
         ],       
     ];
   

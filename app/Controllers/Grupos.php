@@ -100,6 +100,48 @@ class Grupos extends BaseController
         return view('Grupos/view', $data);
     }
 
+    public function create()
+    {
+        $grupo = new Grupo();      
+
+        $data = [
+            'title' => 'Criando Novo Grupo',
+            'grupo'  => $grupo,
+        ];
+
+        return view('Grupos/create', $data);
+    }
+
+    public function store()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        $retorno['token'] = csrf_hash();
+
+        $post = $this->request->getPost();
+
+        $grupo = new Grupo($post);
+
+        if ($this->grupoModel->save($grupo)) {
+
+            $btnCreate = anchor('grupos/create', 'Cadastrar Novo Grupo', ['class' => 'btn btn-danger']);
+
+            session()->setFlashdata('sucesso', "Dados salvos com sucesso. <br> $btnCreate");
+
+            $retorno['id'] = $this->grupoModel->getInsertID();
+
+            return $this->response->setJSON($retorno);
+        }
+
+        $retorno['erro'] = 'Por favor, verifique os dados abaixo e tente novamente:';
+
+        $retorno['erros_model'] = $this->grupoModel->errors();
+
+        return $this->response->setJSON($retorno);
+    }
+
     public function edit(int $id = null)
     {
         $grupo = $this->getGrupoOr404($id);
@@ -108,7 +150,7 @@ class Grupos extends BaseController
 
             return redirect()
                     ->back()
-                    ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou removido.');
+                    ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou excluído.');
             
         }
 
@@ -160,7 +202,7 @@ class Grupos extends BaseController
         }
 
         # grava os dados (protect(false) = retira a protecao dos dados)
-        if ($this->grupoModel->protect(false)->save($grupo)) {
+        if ($this->grupoModel->save($grupo)) {
 
             session()->setFlashdata('sucesso', 'Dados salvos com sucesso.');
 
@@ -175,5 +217,61 @@ class Grupos extends BaseController
 
         # retorno para o ajax request
         return $this->response->setJSON($retorno);
+    }
+
+    public function delete(int $id = null)
+    {
+        $grupo = $this->getGrupoOr404($id);
+
+        # se o grupo está excluido, aborta a execução e exibe uma mensagem
+        if ($grupo->deleted_at != null) {
+            return redirect()->back()->with('info', 'Esse grupo já encontra-se excluído');
+        }
+
+        # evitar que os usuarios Administrador e Clientes sejam excluídos
+        if ($grupo->id < 3) {
+
+            return redirect()
+                    ->back()
+                    ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou excluído.');
+            
+        }
+
+        # se a requisição foi do tipo post
+        if ($this->request->getMethod() === 'post') {
+
+            # remove o grupo
+            $this->grupoModel->delete($grupo->id);
+
+            # retornamos p/a página principal de grupos e mostramos uma mensagem de sucesso
+            return redirect()->to(site_url('grupos'))
+                            ->with('sucesso', 'Grupo ' . esc($grupo->name) . ' excluído com sucesso.');
+
+        }
+
+        $data = [
+            'title' => 'Excluindo o Grupo ' . esc($grupo->name),
+            'grupo'  => $grupo,
+        ];
+
+        return view('Grupos/delete', $data);
+    }
+
+    public function restoreGrupo(int $id = null)
+    {
+        # busca o grupo pelo id
+        $grupo = $this->getGrupoOr404($id);
+
+        # grupo não deletado não pode ser restaurado
+        if ($grupo->deleted_at == null) {
+            return redirect()->back()->with('info', 'Apenas grupos excluídos podem ser restaurados.');
+        }
+
+        # restaurar o grupo deletado
+        $grupo->deleted_at = null;
+        $this->grupoModel->protect(false)->save($grupo);
+
+        return redirect()->back()->with('sucesso', "Grupo $grupo->name restaurado com sucesso.");
+
     }
 }

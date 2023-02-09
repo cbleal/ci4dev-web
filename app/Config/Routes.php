@@ -58,8 +58,13 @@ $routes->get('users/restoreUser/(:num)', 'Users::restoreUser/$1');
 $routes->get('grupos', 'Grupos::index');
 $routes->get('grupos/getGrupos', 'Grupos::getGrupos');
 $routes->get('grupos/view/(:num)', 'Grupos::view/$1');
+$routes->get('grupos/create', 'Grupos::create');
+$routes->post('grupos/store', 'Grupos::store');
 $routes->get('grupos/edit/(:num)', 'Grupos::edit/$1');
 $routes->post('grupos/update', 'Grupos::update');
+$routes->get('grupos/delete/(:num)', 'Grupos::delete/$1');
+$routes->post('grupos/delete/(:num)', 'Grupos::delete/$1');
+$routes->get('grupos/restoreGrupo/(:num)', 'Grupos::restoreGrupo/$1');
 
 
 

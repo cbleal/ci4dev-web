@@ -369,7 +369,7 @@ class Users extends BaseController
 
             # retornamos p/a página principal de usuarios e mostramos uma mensagem de sucesso
             return redirect()->to(site_url('users'))
-                            ->with('sucesso', "Usuário {$user->name} excluído com sucesso.");
+                            ->with('sucesso', 'Usuário ' . esc($user->name) . ' excluído com sucesso.');
 
         }
 
