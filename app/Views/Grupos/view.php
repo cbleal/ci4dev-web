@@ -67,6 +67,13 @@
 
                         <div class="dropdown-divider"></div>
 
+
+                        <?php if ($grupo->id > 2) : ?>
+                            <a class="dropdown-item" href="<?= site_url("grupos/permissions/{$grupo->id}") ?>">Gerenciar Permissões</a>
+                        <?php endif; ?>
+                        
+                        <div class="dropdown-divider"></div>
+
                         <?php if ($grupo->deleted_at != null) : ?>
                             <a class="dropdown-item" href="<?= site_url("grupos/restoregrupo/{$grupo->id}") ?>">Restaurar Grupo</a>
                         <?php else : ?>

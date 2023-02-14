@@ -5,13 +5,16 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\GrupoModel;
 use App\Entities\Grupo;
+use App\Models\GruposPermissionsModel;
 
 class Grupos extends BaseController
 {
     private $grupoModel;
+    private $grupoPermissionsModel;
 
     public function __construct() {
         $this->grupoModel = new GrupoModel();
+        $this->grupoPermissionsModel = new GruposPermissionsModel();
     }
 
     public function index()
@@ -273,5 +276,36 @@ class Grupos extends BaseController
 
         return redirect()->back()->with('sucesso', "Grupo $grupo->name restaurado com sucesso.");
 
+    }
+
+    public function permissions(int $id = null)
+    {
+        $grupo = $this->getGrupoOr404($id);
+
+        if ($grupo->id < 3) {
+
+            return redirect()
+                    ->back()
+                    ->with('atencao', 'Não é necessário atribuir ou remover permissão para esse grupo.');
+            
+        }
+
+        if ($grupo->id > 2) {
+
+            $grupo->permissions = $this->grupoPermissionsModel->getPermissionsOfGrupo($grupo->id, 5);
+            $grupo->pager = $this->grupoPermissionsModel->pager;
+
+        }
+
+        // dd($grupo);
+
+        $data = [
+            'title' => 'Gerenciando permissões do Grupo ' . esc($grupo->name),
+            'grupo'  => $grupo,
+        ];
+
+        
+
+        return view('Grupos/permissions', $data);
     }
 }
