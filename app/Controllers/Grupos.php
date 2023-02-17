@@ -6,15 +6,18 @@ use App\Controllers\BaseController;
 use App\Models\GrupoModel;
 use App\Entities\Grupo;
 use App\Models\GruposPermissionsModel;
+use App\Models\PermissionsModel;
 
 class Grupos extends BaseController
 {
     private $grupoModel;
     private $grupoPermissionsModel;
+    private $permissionModel;
 
     public function __construct() {
         $this->grupoModel = new GrupoModel();
         $this->grupoPermissionsModel = new GruposPermissionsModel();
+        $this->permissionModel = new PermissionsModel();
     }
 
     public function index()
@@ -283,28 +286,27 @@ class Grupos extends BaseController
         $grupo = $this->getGrupoOr404($id);
 
         if ($grupo->id < 3) {
-
             return redirect()
                     ->back()
-                    ->with('atencao', 'Não é necessário atribuir ou remover permissão para esse grupo.');
-            
-        }
+                    ->with('atencao', 'Não é necessário atribuir ou remover permissão para esse grupo.');            
+        }      
 
         if ($grupo->id > 2) {
-
             $grupo->permissions = $this->grupoPermissionsModel->getPermissionsOfGrupo($grupo->id, 5);
             $grupo->pager = $this->grupoPermissionsModel->pager;
-
         }
-
-        // dd($grupo);
 
         $data = [
             'title' => 'Gerenciando permissões do Grupo ' . esc($grupo->name),
             'grupo'  => $grupo,
         ];
 
-        
+        if (! empty($grupo->permissions)) {
+            $permissionsExists = array_column($grupo->permissions, 'permission_id');
+            $data['permissionsAvailables'] = $this->permissionModel->whereNotIn('id',$permissionsExists)->findAll();
+        } else {
+            $data['permissionsAvailables'] = $this->permissionModel->findAll();
+        }
 
         return view('Grupos/permissions', $data);
     }

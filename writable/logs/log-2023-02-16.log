@@ -1,0 +1,9 @@
+CRITICAL - 2023-02-16 17:30:59 --> CodeIgniter\Database\BaseBuilder::whereNotIn(): Argument #1 ($key) must be of type ?string, array given, called in C:\dev\php\ci4dev-web\vendor\codeigniter4\framework\system\Model.php on line 772
+in SYSTEMPATH\Database\BaseBuilder.php on line 813.
+ 1 SYSTEMPATH\Model.php(772): CodeIgniter\Database\BaseBuilder->whereNotIn()
+ 2 APPPATH\Controllers\Grupos.php(306): CodeIgniter\Model->__call()
+ 3 SYSTEMPATH\CodeIgniter.php(927): App\Controllers\Grupos->permissions()
+ 4 SYSTEMPATH\CodeIgniter.php(482): CodeIgniter\CodeIgniter->runController()
+ 5 SYSTEMPATH\CodeIgniter.php(351): CodeIgniter\CodeIgniter->handleRequest()
+ 6 FCPATH\index.php(67): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Commands\Server\rewrite.php(46): require_once('FCPATH\\index.php')
