@@ -1,4 +1,4 @@
-<!-- View Usuarios -->
+<!-- View permissions alterada -->
 
 <?= $this->extend('Layout/principal') ?>
 
@@ -30,7 +30,7 @@
                     <?= form_open('/', ['id' => 'form'], ['id' => $grupo->id]) ?>
                     <div class="form-group">
                         <label class="form-control-label">Escolha uma ou mais permissões:</label>
-                        <select class="form-control" name="permission_id[]" multiple>
+                        <select class="form-group" name="permission_id[]" multiple>
                             <option value="">Selecione...</option>
                             <?php foreach($permissionsAvailables as $permission) : ?>
                                 <option value="<?= $permission->id ?>"><?= esc($permission->name) ?></option>
