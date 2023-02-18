@@ -1,4 +1,4 @@
-<!-- View permissions alterada -->
+<!-- View Usuarios -->
 
 <?= $this->extend('Layout/principal') ?>
 
@@ -9,7 +9,7 @@
 
 <!-- Aqui eu coloco os estilos da página -->
 <?= $this->section('styles') ?>
-
+<link rel="stylesheet" type="text/css" href="<?= site_url('features/vendor/selectize/selectize.bootstrap4.css') ?>" />
 <?= $this->endSection() ?>
 
 <!-- Aqui eu coloco o conteúdo da página -->
@@ -30,7 +30,7 @@
                     <?= form_open('/', ['id' => 'form'], ['id' => $grupo->id]) ?>
                     <div class="form-group">
                         <label class="form-control-label">Escolha uma ou mais permissões:</label>
-                        <select class="form-group" name="permission_id[]" multiple>
+                        <select class="selectize" name="permission_id[]" multiple>
                             <option value="">Selecione...</option>
                             <?php foreach($permissionsAvailables as $permission) : ?>
                                 <option value="<?= $permission->id ?>"><?= esc($permission->name) ?></option>
@@ -95,5 +95,19 @@
 
 <!-- Aqui eu coloco os scripts da página -->
 <?= $this->section('scripts') ?>
+<script type="text/javascript" src="<?= site_url('features/vendor/selectize/selectize.min.js') ?>"></script>
 
+<script>
+    $(".selectize").selectize({
+        delimiter: ",",
+        persist: false,
+        maxItems: null,
+        create: function (input) {
+            return {
+            value: input,
+            text: input,
+            };
+        }
+    });   
+</script>
 <?= $this->endSection() ?>
