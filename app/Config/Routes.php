@@ -66,6 +66,8 @@ $routes->get('grupos/delete/(:num)', 'Grupos::delete/$1');
 $routes->post('grupos/delete/(:num)', 'Grupos::delete/$1');
 $routes->get('grupos/restoreGrupo/(:num)', 'Grupos::restoreGrupo/$1');
 $routes->get('grupos/permissions/(:num)', 'Grupos::permissions/$1');
+$routes->post('grupos/createPermission', 'Grupos::createPermission');
+$routes->post('grupos/removePermission/(:num)', 'Grupos::removePermission/$1');
 
 
 

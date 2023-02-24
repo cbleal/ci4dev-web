@@ -16,7 +16,7 @@ class GruposPermissionsModel extends Model
     public function getPermissionsOfGrupo(int $grupo_id, int $qtd_paginator)
     {
         $atributos = [
-            'grupos_permissions.id',
+            'grupos_permissions.id AS grupo_permission_id',
             'grupos.id AS grupo_id',
             'permissions.id AS permission_id',
             'permissions.name'

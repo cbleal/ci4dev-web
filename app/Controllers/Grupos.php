@@ -310,4 +310,47 @@ class Grupos extends BaseController
 
         return view('Grupos/permissions', $data);
     }
+
+    public function createPermission()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        $retorno['token'] = csrf_hash();
+        $post = $this->request->getPost();       
+        $grupo = $this->getGrupoOr404($post['id']);
+
+        if (empty($post['permission_id'])) {
+            $retorno['erro'] = 'Por favor, verifique os dados abaixo e tente novamente:';
+            $retorno['erros_model'] = ['permission_id' => 'Você deve escolher uma ou mais permissões para salvar.'];
+            return $this->response->setJSON($retorno);
+        }
+
+        $permissionPush = [];
+
+        foreach ($post['permission_id'] as $permission_id) {
+            array_push($permissionPush, [
+                'grupo_id' => $grupo->id,
+                'permission_id' => $permission_id
+            ]);
+        }
+
+        $this->grupoPermissionsModel->insertBatch($permissionPush);
+        session()->setFlashdata('sucesso', 'Dados salvos com sucesso.');
+        return $this->response->setJSON($retorno);
+    }
+
+    public function removePermission(int $grupo_permission_id = null)
+    {
+        if ($this->request->getMethod() === 'post') {
+            # remove a permissão
+            $this->grupoPermissionsModel->delete($grupo_permission_id);
+            # retorna para página atual
+            return redirect()->back()->with('sucesso', 'Permissão excluída com sucesso!');
+        } else {
+            # não acontece nada porque não é post, permanece na pagina
+            return redirect()->back();
+        }
+    }
 }
