@@ -65,9 +65,6 @@
 
                         <a class="dropdown-item" href="<?= site_url("grupos/edit/{$grupo->id}") ?>">Editar Grupo</a>
 
-                        <div class="dropdown-divider"></div>
-
-
                         <?php if ($grupo->id > 2) : ?>
                             <a class="dropdown-item" href="<?= site_url("grupos/permissions/{$grupo->id}") ?>">Gerenciar Permissões</a>
                         <?php endif; ?>

@@ -62,6 +62,7 @@
                 <div class="dropdown-menu">                    
 
                     <a class="dropdown-item" href="<?= site_url("users/edit/{$user->id}") ?>">Editar Usuário</a>
+                    <a class="dropdown-item" href="<?= site_url("users/grupos/{$user->id}") ?>">Gerenciar os Grupos de Acesso</a>
 
                     <div class="dropdown-divider"></div>
 

@@ -5,14 +5,20 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use App\Models\UserModel;
 use App\Entities\User;
+use App\Models\GrupoModel;
+use App\Models\GruposUsersModel;
 
 class Users extends BaseController
 {
     private $userModel;
+    private $gruposUserModel;
+    private $grupoModel;
 
     public function __construct()
     {
         $this->userModel = new UserModel();
+        $this->gruposUserModel = new GruposUsersModel();
+        $this->grupoModel = new GrupoModel();
     }
 
     public function index()
@@ -462,4 +468,34 @@ class Users extends BaseController
         }
     }
 
+    public function grupos(int $id = null)
+    {
+        $user = $this->getUserOr404($id);
+
+        $user->grupos = $this->gruposUserModel->getGruposOfUser($user->id, 5);
+        $user->pager = $this->gruposUserModel->pager;
+
+        $data = [
+            'title' => 'Gerenciando o Grupo de Permissão do Usuário ' . esc($user->name),
+            'user'  => $user,
+        ];
+
+        if (in_array(2, array_column($user->grupos, 'grupo_id'))) {
+            return redirect()->to(site_url("users/view/$user->id"))->with('info', 'Este usuário é cliente, portanto não há necessidade de atribuir ou remover permissão de grupo.');
+        }
+
+        # se o usuario tiver algum grupo
+        if (!empty($user->grupos)) {
+            # recuperar todos os grupos que este usuario não possui e também com exceção do grupo clientes
+            $gruposExists = array_column($user->grupos, 'grupo_id');
+            $data['gruposAvailables'] = $this->grupoModel->where('id != 2')
+                                                         ->whereNotIn('id', $gruposExists)
+                                                         ->findAll();
+        } else {
+            $data['gruposAvailables'] = $this->grupoModel->where('id != 2')
+                                                         ->findAll();
+        }
+
+        return view('Users/grupos', $data);
+    }
 }

@@ -352,5 +352,5 @@ class Grupos extends BaseController
             # não acontece nada porque não é post, permanece na pagina
             return redirect()->back();
         }
-    }
+    }   
 }
