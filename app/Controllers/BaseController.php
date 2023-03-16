@@ -35,7 +35,7 @@ abstract class BaseController extends Controller
      *
      * @var array
      */
-    protected $helpers = ['form', 'html'];
+    protected $helpers = ['form', 'html', 'text'];
 
     /**
      * Constructor.
@@ -52,19 +52,15 @@ abstract class BaseController extends Controller
 
     protected function viewFile(string $pathTo, string $file)
     {
-        $path = WRITEPATH . "uploads/$pathTo/$file";       
-
+        $path = WRITEPATH . "uploads/$pathTo/$file";
         $fileInfo = new \finfo(FILEINFO_MIME);
-
         $fileType = $fileInfo->file($path);
-
         $fileSize = filesize($path);
 
         header("Content-Type: $fileType");
         header("Content-Length: $fileSize");
 
         readfile($path);
-
         exit;
     }
 }

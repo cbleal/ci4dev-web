@@ -14,7 +14,8 @@ class Grupos extends BaseController
     private $grupoPermissionsModel;
     private $permissionModel;
 
-    public function __construct() {
+    public function __construct()
+    {
         $this->grupoModel = new GrupoModel();
         $this->grupoPermissionsModel = new GruposPermissionsModel();
         $this->permissionModel = new PermissionsModel();
@@ -51,9 +52,9 @@ class Grupos extends BaseController
 
         # objeto grupos recuperados da tabela
         $grupos = $this->grupoModel->select($fields)
-                                ->withDeleted(true)
-                                ->orderBy('id', 'DESC')
-                                ->findAll();
+            ->withDeleted(true)
+            ->orderBy('id', 'DESC')
+            ->findAll();
 
         # array data => vai receber os grupos
         $data = [];
@@ -76,7 +77,7 @@ class Grupos extends BaseController
         # array retorno => vai receber o array data
         $retorno = [
             'data' => $data,
-        ];       
+        ];
 
         # retornar no formato Json o array retorno
         return $this->response->setJSON($retorno);
@@ -108,7 +109,7 @@ class Grupos extends BaseController
 
     public function create()
     {
-        $grupo = new Grupo();      
+        $grupo = new Grupo();
 
         $data = [
             'title' => 'Criando Novo Grupo',
@@ -155,9 +156,8 @@ class Grupos extends BaseController
         if ($grupo->id < 3) {
 
             return redirect()
-                    ->back()
-                    ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou excluído.');
-            
+                ->back()
+                ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou excluído.');
         }
 
         $data = [
@@ -182,7 +182,7 @@ class Grupos extends BaseController
         $post = $this->request->getPost();
 
         # validando a existencia de um grupo
-        $grupo = $this->getGrupoOr404($post['id']);      
+        $grupo = $this->getGrupoOr404($post['id']);
 
         # validar a operação para os grupos Administrador e Clientes
         if ($grupo->id < 3) {
@@ -195,7 +195,6 @@ class Grupos extends BaseController
 
             # retorno para o ajax request
             return $this->response->setJSON($retorno);
-            
         }
 
         # preenchemos os atributos do grupo com os valores do post
@@ -238,9 +237,8 @@ class Grupos extends BaseController
         if ($grupo->id < 3) {
 
             return redirect()
-                    ->back()
-                    ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou excluído.');
-            
+                ->back()
+                ->with('atencao', 'O grupo <strong> ' . esc($grupo->name) . '</strong> não pode ser alterado ou excluído.');
         }
 
         # se a requisição foi do tipo post
@@ -251,8 +249,7 @@ class Grupos extends BaseController
 
             # retornamos p/a página principal de grupos e mostramos uma mensagem de sucesso
             return redirect()->to(site_url('grupos'))
-                            ->with('sucesso', 'Grupo ' . esc($grupo->name) . ' excluído com sucesso.');
-
+                ->with('sucesso', 'Grupo ' . esc($grupo->name) . ' excluído com sucesso.');
         }
 
         $data = [
@@ -278,7 +275,6 @@ class Grupos extends BaseController
         $this->grupoModel->protect(false)->save($grupo);
 
         return redirect()->back()->with('sucesso', "Grupo $grupo->name restaurado com sucesso.");
-
     }
 
     public function permissions(int $id = null)
@@ -287,9 +283,9 @@ class Grupos extends BaseController
 
         if ($grupo->id < 3) {
             return redirect()
-                    ->back()
-                    ->with('atencao', 'Não é necessário atribuir ou remover permissão para esse grupo.');            
-        }      
+                ->back()
+                ->with('atencao', 'Não é necessário atribuir ou remover permissão para esse grupo.');
+        }
 
         if ($grupo->id > 2) {
             $grupo->permissions = $this->grupoPermissionsModel->getPermissionsOfGrupo($grupo->id, 5);
@@ -301,9 +297,9 @@ class Grupos extends BaseController
             'grupo'  => $grupo,
         ];
 
-        if (! empty($grupo->permissions)) {
+        if (!empty($grupo->permissions)) {
             $permissionsExists = array_column($grupo->permissions, 'permission_id');
-            $data['permissionsAvailables'] = $this->permissionModel->whereNotIn('id',$permissionsExists)->findAll();
+            $data['permissionsAvailables'] = $this->permissionModel->whereNotIn('id', $permissionsExists)->findAll();
         } else {
             $data['permissionsAvailables'] = $this->permissionModel->findAll();
         }
@@ -318,7 +314,7 @@ class Grupos extends BaseController
         }
 
         $retorno['token'] = csrf_hash();
-        $post = $this->request->getPost();       
+        $post = $this->request->getPost();
         $grupo = $this->getGrupoOr404($post['id']);
 
         if (empty($post['permission_id'])) {
@@ -352,5 +348,5 @@ class Grupos extends BaseController
             # não acontece nada porque não é post, permanece na pagina
             return redirect()->back();
         }
-    }   
+    }
 }
